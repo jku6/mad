@@ -1,0 +1,65 @@
+<!doctype html>
+<html ng-app="madLibs" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ngMadLibs App</title>
+	<link rel="stylesheet" href="ngMadLibs.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.min.js"></script>
+	<script src="ngMadLibs.js"></script>
+</head>
+<body>
+
+	<header>
+		<h1><img src="img/ng-mad-libs-logo.png" alt="ngMadLibs App"></h1>
+		<h2>Automate this!</h2>
+	</header>
+
+
+	<section ng-show="view.inputMode" ng-controller="madLibsFormController">
+		<h3>Provide the following words:</h3>
+		<form ng-submit="submit()">
+			<ul>
+				<li>
+					<input type="radio" required ng-model="data.gender" name="gender" id="gender-Female" value="Female"><label for="gender-Female">Woman</label>
+					&nbsp;
+					<input type="radio" required ng-model="data.gender" name="gender" id="gender-Male" value="Male"><label for="gender-Male">Man</label>
+				</li>
+				<li><input type="text" size="15" required ng-model="data.protoganist"></li>
+				<li><input type="text" size="10" required ng-model="data.jobTitle"></li>
+				<li><input type="text" size="15" required ng-model="data.tediousTask"></li>
+				<li><input type="text" size="15" required ng-model="data.dirtyTask"></li>
+				<li><input type="text" size="15" required ng-model="data.uselessSkill"></li>
+				<li><input type="text" size="10" required ng-model="data.obnoxiousCelebrity"></li>
+				<li><input type="text" size="10" required ng-model="data.adjective"></li>
+				<li><input type="number" required ng-model="data.hugeNumber"></li>
+			</ul>
+			<button>Generate my mad lib</button>
+		</form>
+	</section>
+
+	<article ng-show="view.show" ng-controller="madLibsStoryController">
+		<p>
+			<mark>{{ madLib.protoganist }}</mark> was a <mark>{{ madLib.jobTitle }}</mark> who loved technology.
+			Although {{ madLib.female ? 'she' : 'he' }} loved parts of {{ madLib.female ? 'her' : 'his' }} job,
+			{{ madLib.female ? 'she' : 'he' }} absolutely hated <mark>{{ madLib.tediousTask }}</mark> and <mark>{{ madLib.dirtyTask }}</mark>.
+			So, <mark>{{ madLib.protoganist }}</mark> met with {{ madLib.female ? 'her' : 'his' }} life mentor <mark>{{ madLib.obnoxiousCelebrity }}</mark>
+			who told {{ madLib.female ? 'her' : 'him' }} to learn how to <mark>{{ madLib.uselessSkill }}</mark> with Thinkful.
+			Thinkful didn't offer a course on <mark>{{ madLib.uselessSkill }}</mark> so {{ madLib.female ? 'she' : 'he' }} studied programming instead.
+		</p>
+
+		<p>
+			What a great decision!
+			With <mark>{{ madLib.female ? 'her' : 'his' }}</mark> new skills,
+			<mark>{{ madLib.protoganist }}</mark> built 
+			{{ madLib.adjectiveVowel ? 'an' : 'a' }}
+			<mark>{{ madLib.adjective }}</mark> robot named <mark>{{ madLib.obnoxiousCelebrity | uppercase }}</mark>
+			that not only loved <mark>{{ madLib.dirtyTask }}</mark> but did it <mark>{{ madLib.hugeNumber }}</mark> times faster.
+		</p>
+
+		<button ng-click="reset()">Start over</button>
+	</article>
+
+
+</body>
+</html>

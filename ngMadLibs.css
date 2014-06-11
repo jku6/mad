@@ -1,0 +1,119 @@
+body {
+	font: 18px/1.5 Verdana, sans-serif;
+	margin: 0 auto;
+	padding: 2em;
+	background: #fafafa;
+	color: #333;
+	max-width: 40em;
+}
+
+header {
+	border: .3em solid #000;
+	background: #fff url(img/mad-lib-happy-face.png) 25px 25px no-repeat;
+	padding: 1em 3em 1em 250px;
+	height: 250px;
+}
+h1, h2 {
+	text-align: center;
+	margin: 0;
+}
+
+section,
+article {
+	border: .3em solid #000;
+	margin-top: -.3em; /* overlap border */
+	padding: 1em 3.5em 5em;
+	overflow: hidden; /* hide elements outside the bounds for animated fly in */
+}
+
+ul {
+	display: block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	-webkit-columns: 3;
+	-moz-columns: 3;
+	columns: 3;
+}
+li {
+	display: inline-block;
+}
+
+input {
+	border: 3px solid #000;
+	border-radius: 3px;
+	font: inherit;
+	padding: .2em;
+	display: inline;
+	width: auto;
+	margin: 1em 0;
+}
+input[type="number"] {
+	width: 5em;
+}
+button {
+	border: 3px solid #000;
+	border-radius: 3px;
+	font: inherit;
+	margin: 0;
+	display: inline-block;
+	text-align: center;
+	padding: .2em 1em;
+	box-shadow: .3em .3em 0 rgba( 0, 0, 0, .8 );
+}
+button:active {
+	margin: .2em 0 -.2em .2em;
+	box-shadow: .1em .1em 0 rgba( 0, 0, 0, .9 );
+	transition: margin 60ms, box-shadow 50ms;
+}
+
+mark {
+	font-weight: bold;
+	background: transparent;
+}
+
+
+/* animation */
+.ng-hide-remove {
+	display: block !important;
+}
+
+/* fade in content */
+.ng-hide {
+	opacity: 0;
+	transition: none;
+}
+article, section {
+	opacity: 1;
+	transition: .33s all;
+}
+
+/* fly-in mark/input elements */
+.ng-hide-remove mark {
+	left: -30em;
+	top: -30em;
+}
+.ng-hide-remove mark:nth-of-type(2n) {
+	left: 30em;
+	top: 30em;
+}
+mark {
+	transition: .5s all;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+/* mix up transition timing */
+mark:nth-of-type(2n) {
+	transition-duration: 1.33s;
+}
+mark:nth-of-type(3n) {
+	transition-delay: .5s;
+	left: 0;
+}
+/* draw attention to first item */
+p:first-child mark:nth-of-type(1) {
+	transition-duration: 2.3s;
+	left: 0;
+}
